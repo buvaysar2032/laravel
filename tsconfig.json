@@ -17,6 +17,7 @@
         "types": [
             "vite/client",
             "vue/tsx",
+            "resources/js/types/axios.d.ts"
         ],
         "resolveJsonModule": true,
         "allowJs": true,
@@ -32,6 +33,7 @@
         "resources/js/**/*.ts",
         "resources/js/**/*.d.ts",
         "resources/js/**/*.tsx",
-        "resources/js/**/*.vue"
+        "resources/js/**/*.vue",
+        "vite.config.ts"
     ],
 }
