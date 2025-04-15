@@ -1,11 +1,7 @@
-<script setup>
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <h1>App</h1>
+    <h1>App</h1>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
