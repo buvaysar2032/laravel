@@ -4,12 +4,69 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\OpenApi\Attributes\RequestFormData;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use OpenApi\Attributes\Items;
+use OpenApi\Attributes\JsonContent;
+use OpenApi\Attributes\Post;
+use OpenApi\Attributes\Property;
+use OpenApi\Attributes\Response;
 
+#[Post(
+    path: '/api/register',
+    operationId: 'registerUser',
+    description: 'Регистрация нового пользователя',
+    summary: 'Регистрация',
+    tags: ['Auth']
+)]
+#[RequestFormData(
+    requiredProps: ['name', 'email', 'password', 'password_confirmation'],
+    properties: [
+        new Property(property: 'name', description: 'Имя пользователя', type: 'string'),
+        new Property(property: 'email', description: 'Email', type: 'string'),
+        new Property(property: 'password', description: 'Пароль', type: 'string'),
+        new Property(property: 'password_confirmation', description: 'Подтверждение пароля', type: 'string')
+    ]
+)]
+#[Response(
+    response: 201,
+    description: 'Успешная регистрация',
+    content: new JsonContent(
+        properties: [
+            new Property(property: 'message', type: 'string', example: 'User Created'),
+            new Property(property: 'user', ref: '#/components/schemas/User')
+        ]
+    )
+)]
+#[Response(
+    response: 422,
+    description: 'Ошибка валидации',
+    content: new JsonContent(
+        properties: [
+            new Property(property: "message", type: "string", example: "Такое значение поля email адрес уже существует."),
+            new Property(
+                property: "errors",
+                properties: [
+                    new Property(
+                        property: "email",
+                        type: "array",
+                        items: new Items(type: "string", example: "Значение поля email адрес должно быть действительным электронным адресом.")
+                    ),
+                    new Property(
+                        property: "password",
+                        type: "array",
+                        items: new Items(type: "string", example: "Количество символов в поле пароль должно быть не меньше 8.")
+                    )
+                ],
+                type: "object"
+            )
+        ]
+    )
+)]
 class RegisteredUserController extends Controller
 {
     /**
