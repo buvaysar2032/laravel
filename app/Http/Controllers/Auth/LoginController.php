@@ -9,7 +9,6 @@ use App\OpenApi\Attributes\RequestFormData;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use OpenApi\Attributes\Delete;
 use OpenApi\Attributes\Items;
 use OpenApi\Attributes\JsonContent;
 use OpenApi\Attributes\Post;
@@ -98,6 +97,7 @@ class LoginController extends Controller
         operationId: 'logoutUser',
         description: 'Удаляет текущую аутентификацию пользователя.',
         summary: 'Логин пользователя',
+        security: [['bearerAuth' => []]],
         tags: ['Auth']
     )]
     #[\OpenApi\Attributes\Response(
@@ -112,7 +112,7 @@ class LoginController extends Controller
         description: 'Ошибка аутентификации',
         content: new JsonContent(
             properties: [
-                new Property(property: 'message', type: 'string', example: 'Неаутентифицированный')
+                new Property(property: 'message', type: 'string', example: 'Не авторизован')
             ]
         )
     )]
