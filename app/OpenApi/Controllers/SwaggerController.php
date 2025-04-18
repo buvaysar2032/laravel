@@ -26,6 +26,7 @@ class SwaggerController extends Controller
     {
         // Папки, где искать атрибуты
         $dirs = [
+            app_path('OpenApi/Controllers'),
             app_path('OpenApi/Attributes'),
             app_path('Http/Controllers'),
             app_path('Models'),

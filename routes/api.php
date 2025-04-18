@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\TextController;
 use App\OpenApi\Controllers\SwaggerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,3 +18,6 @@ Route::prefix('v1')->group(function () {
     // Маршрут для генерации JSON документации
     Route::get('/openapi.json', [SwaggerController::class, 'json']);
 });
+
+
+Route::get('/texts', [TextController::class, 'index']);
