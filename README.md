@@ -57,7 +57,7 @@ npm run dev
 ```
 
 3. Админ панель Moonshine будет доступна по адресу:
-```http
+```
 http://localhost:8000/admin
 ```
 
@@ -73,7 +73,7 @@ npm run build
 npm run lint
 ```
 
-Форматирование кода:
+- Форматирование кода:
 ```
 npm run format
 ```
