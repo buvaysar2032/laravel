@@ -31,9 +31,9 @@ npm install
 - Скопируйте файл **.env.example** в **.env**
 - Настройте параметры базы данных в .env
 - Сгенерируйте ключ приложения:
-    ```php
-    php artisan key:generate
-    ```
+```php
+php artisan key:generate
+```
 
 ### 5. Запуск миграций:
 ```php
@@ -57,7 +57,7 @@ npm run dev
 ```
 
 3. Админ панель Moonshine будет доступна по адресу:
-```http request
+```http
 http://localhost:8000/admin
 ```
 
