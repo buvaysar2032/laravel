@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Swagger UI</title>
     <link href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" rel="stylesheet">
+    <link rel="icon" href="{{ url('images/favicon-32x32.png') }}" type="image/png" sizes="32x32">
+    <link rel="icon" href="{{ url('images/favicon-16x16.png') }}" type="image/png" sizes="16x16">
 </head>
 <body>
 <div id="swagger-ui"></div>

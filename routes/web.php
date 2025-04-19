@@ -7,10 +7,8 @@ Route::get('/', function () {
 });
 
 
-
-Route::prefix('api/v1')->group(function () {
-    // Маршрут для отображения документации Swagger UI
+Route::prefix('api')->group(function () {
     Route::get('/docs', fn () => view('swagger-ui', [
-        'jsonUrl' => url('/api/v1/openapi.json')
+        'jsonUrl' => url('/api/openapi.json')
     ]));
 });

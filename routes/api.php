@@ -13,11 +13,7 @@ Route::get('/user', function (Request $request) {
 
 require __DIR__.'/auth.php';
 
-
-Route::prefix('v1')->group(function () {
-    // Маршрут для генерации JSON документации
-    Route::get('/openapi.json', [SwaggerController::class, 'json']);
-});
+Route::get('/openapi.json', [SwaggerController::class, 'json']);
 
 
 Route::get('/texts', [TextController::class, 'index']);
