@@ -32,6 +32,7 @@ use MoonShine\UI\Components\{Breadcrumbs,
     When};
 use App\MoonShine\Resources\TextResource;
 use MoonShine\MenuManager\MenuItem;
+use App\MoonShine\Resources\UserResource;
 
 final class MoonShineLayout extends AppLayout
 {
@@ -46,6 +47,7 @@ final class MoonShineLayout extends AppLayout
     {
         return [
             ...parent::menu(),
+            MenuItem::make('Пользователи', UserResource::class),
             MenuItem::make('Тексты', TextResource::class),
         ];
     }
