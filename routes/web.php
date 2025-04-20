@@ -3,12 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('vue');
+    return view('app');
 });
 
 
 Route::prefix('api')->group(function () {
-    Route::get('/docs', fn () => view('swagger-ui', [
+    Route::get('/docs', fn () => view('swagger/ui', [
         'jsonUrl' => url('/api/openapi.json')
     ]));
 });

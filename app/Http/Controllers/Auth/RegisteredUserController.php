@@ -38,7 +38,13 @@ use OpenApi\Attributes\Response;
     content: new JsonContent(
         properties: [
             new Property(property: 'message', type: 'string', example: 'User Created'),
-            new Property(property: 'user', ref: '#/components/schemas/User')
+            new Property(property: 'user', properties: [
+                new Property(property: 'id', description: 'ID пользователя', type: 'integer', example: 1),
+                new Property(property: 'name', description: 'Имя пользователя', type: 'string', example: 'John Doe'),
+                new Property(property: 'email', description: 'Email пользователя', type: 'string', example: 'john@example.com'),
+                new Property(property: 'created_at', description: 'Дата создания пользователя', type: 'string', format: 'date-time', example: '2025-04-16T12:00:00Z'),
+                new Property(property: 'updated_at', description: 'Дата последнего обновления пользователя', type: 'string', format: 'date-time', example: '2025-04-16T12:00:00Z')
+            ], type: 'object')
         ]
     )
 )]
