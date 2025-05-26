@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Pages;
 
-use MoonShine\Laravel\Pages\Page;
+use MoonShine\Apexcharts\Components\DonutChartMetric;
 use MoonShine\Contracts\UI\ComponentContract;
-#[\MoonShine\MenuManager\Attributes\SkipMenu]
+use MoonShine\Laravel\Pages\Page;
 
+#[\MoonShine\MenuManager\Attributes\SkipMenu]
 class Dashboard extends Page
 {
     /**
@@ -29,7 +30,11 @@ class Dashboard extends Page
      * @return list<ComponentContract>
      */
     protected function components(): iterable
-	{
-		return [];
-	}
+    {
+        return [
+            DonutChartMetric::make('Tasks')
+                ->values(['New' => 234, 'Done' => 421])
+                ->columnSpan(6)
+        ];
+    }
 }
