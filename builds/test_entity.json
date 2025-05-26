@@ -1,0 +1,30 @@
+{
+    "resources": [
+        {
+            "name": "TestEntity",
+            "timestamps": true,
+            "fields": [
+                {
+                    "column": "id",
+                    "type": "id",
+                    "methods": ["sortable"]
+                },
+                {
+                    "column": "name",
+                    "type": "string",
+                    "name": "Name"
+                },
+                {
+                    "column": "email",
+                    "type": "string",
+                    "name": "Email"
+                },
+                {
+                    "column": "is_active",
+                    "type": "boolean",
+                    "name": "Is Active"
+                }
+            ]
+        }
+    ]
+}
