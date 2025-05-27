@@ -14,6 +14,7 @@ use MoonShine\Support\Enums\Layer;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\Date;
 use MoonShine\UI\Fields\ID;
+use VI\MoonShineSpatieMediaLibrary\Fields\MediaLibrary;
 
 /**
  * @extends ModelResource<Text>
@@ -41,6 +42,7 @@ class TextResource extends ModelResource
             ID::make()->sortable(),
             \MoonShine\UI\Fields\Text::make('Ключ', 'key'),
             CKEditor::make('Значение', 'value'),
+            MediaLibrary::make('Cover', 'cover'),
             Date::make('Дата создания', 'created_at')->format('d.m.Y H:i')->sortable(),
             Date::make('Дата изменения', 'updated_at')->format('d.m.Y H:i')->sortable()
         ];
@@ -56,6 +58,8 @@ class TextResource extends ModelResource
                 ID::make(),
                 \MoonShine\UI\Fields\Text::make('Ключ', 'key'),
                 CKEditor::make('Значение', 'value'),
+
+                MediaLibrary::make('Cover', 'cover')
             ])
         ];
     }
