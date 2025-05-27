@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use OpenApi\Attributes\Property;
-use OpenApi\Attributes\Schema;
+use MoonShine\ChangeLog\Traits\HasChangeLog;
+use OpenApi\Attributes\{Property, Schema};
 
 /**
  * This is the model class for table "{{%texts}}".
@@ -24,6 +24,7 @@ use OpenApi\Attributes\Schema;
 class Text extends Model
 {
     use HasFactory;
+    use HasChangeLog;
 
     protected $fillable = [
         'key',

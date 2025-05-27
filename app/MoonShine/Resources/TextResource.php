@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use App\Models\Text;
+use MoonShine\ChangeLog\Components\ChangeLog;
 use MoonShine\CKEditor\Fields\CKEditor;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\Support\Enums\Layer;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\Date;
 use MoonShine\UI\Fields\ID;
@@ -21,6 +23,14 @@ class TextResource extends ModelResource
     protected string $model = Text::class;
 
     protected string $title = 'Тексты';
+
+    protected function onLoad(): void
+    {
+        $this->getFormPage()->pushToLayer(
+            Layer::BOTTOM,
+            ChangeLog::make('Changelog', $this, userResource: MoonShineUserResource::class)->limit(10)
+        );
+    }
 
     /**
      * @return list<FieldContract>

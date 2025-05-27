@@ -19,6 +19,7 @@
         "laravel/telescope": "^5.7",
         "laravel/tinker": "^2.10.1",
         "moonshine/apexcharts": "^1.0",
+        "moonshine/changelog": "^2.0",
         "moonshine/ckeditor": "^3.0",
         "moonshine/moonshine": "^3.12",
         "moonshine/ru": "^1.0",
