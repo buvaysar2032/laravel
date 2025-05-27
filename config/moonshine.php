@@ -63,7 +63,7 @@ return [
     'auth' => [
         'enabled' => true,
         'guard' => 'moonshine',
-        'model' => MoonshineUser::class,
+        'model' => \MoonShine\Permissions\Models\MoonshineUser::class,
         'middleware' => Authenticate::class,
         'pipelines' => [],
     ],

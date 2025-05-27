@@ -6,11 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\TextResource;
 use App\Models\Text;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use OpenApi\Attributes\Get;
-use OpenApi\Attributes\Items;
-use OpenApi\Attributes\JsonContent;
-use OpenApi\Attributes\Property;
-use OpenApi\Attributes\Response;
+use OpenApi\Attributes\{Get, Items, JsonContent, Property, Response};
 
 class TextController extends Controller
 {

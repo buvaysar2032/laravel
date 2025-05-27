@@ -22,6 +22,7 @@
         "moonshine/changelog": "^2.0",
         "moonshine/ckeditor": "^3.0",
         "moonshine/moonshine": "^3.12",
+        "moonshine/permissions": "^2.0",
         "moonshine/ru": "^1.0",
         "zircote/swagger-php": "^5.1"
     },

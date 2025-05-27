@@ -13,6 +13,7 @@ use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Laravel\Models\MoonshineUserRole;
 use MoonShine\MenuManager\Attributes\Group;
 use MoonShine\MenuManager\Attributes\Order;
+use MoonShine\Permissions\Traits\WithPermissions;
 use MoonShine\Support\Attributes\Icon;
 use MoonShine\Support\Enums\Color;
 use MoonShine\Support\ListOf;
@@ -37,7 +38,9 @@ use MoonShine\UI\Fields\Text;
  */
 class MoonShineUserResource extends ModelResource
 {
-    protected string $model = MoonshineUser::class;
+    use WithPermissions;
+
+    protected string $model = \MoonShine\Permissions\Models\MoonshineUser::class;
 
     protected string $column = 'name';
 
