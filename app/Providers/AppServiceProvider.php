@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
@@ -24,11 +25,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        ResetPassword::createUrlUsing(function (object $notifiable, string $token) {
-            return config('app.frontend_url')."/reset-password/$token?email={$notifiable->getEmailForPasswordReset()}";
-        });
+        // Включаем строгий режим для моделей
+        Model::shouldBeStrict();
 
-        VerifyEmail::createUrlUsing(function (object $notifiable) {
+        ResetPassword::createUrlUsing(fn(object $notifiable, string $token): string => config('app.frontend_url')."/reset-password/$token?email={$notifiable->getEmailForPasswordReset()}");
+
+        VerifyEmail::createUrlUsing(function (object $notifiable): string {
             $verificationUrl = URL::temporarySignedRoute(
                 'verification.verify',
                 Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),

@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Pages;
 
+use MoonShine\MenuManager\Attributes\SkipMenu;
 use MoonShine\Apexcharts\Components\DonutChartMetric;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Laravel\Pages\Page;
 
-#[\MoonShine\MenuManager\Attributes\SkipMenu]
+#[SkipMenu]
 class Dashboard extends Page
 {
     /**

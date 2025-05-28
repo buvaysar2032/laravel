@@ -2,39 +2,42 @@
 
 declare(strict_types=1);
 
-use Rector\Caching\ValueObject\Storage\FileCacheStorage;
-use Rector\CodeQuality\Rector\FuncCall\CompactToVariablesRector;
+use Rector\CodeQuality\Rector\If_\ExplicitBoolCompareRector;
 use Rector\Config\RectorConfig;
+use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
+use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
+use Rector\DeadCode\Rector\Property\RemoveUselessVarTagRector;
+use Rector\Php81\Rector\Array_\FirstClassCallableRector;
+use Rector\Php84\Rector\Param\ExplicitNullableParamTypeRector;
+use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
-use Rector\ValueObject\PhpVersion;
-use RectorLaravel\Set\LaravelLevelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
-    // Paths to analyze
     $rectorConfig->paths([
-        __DIR__.'/app',
-        __DIR__.'/config',
-        __DIR__.'/database',
-        __DIR__.'/resources',
-        __DIR__.'/routes',
-        __DIR__.'/tests',
+        __DIR__ . '/app',
+        __DIR__ . '/database',
+        __DIR__ . '/routes',
+        __DIR__ . '/tests',
     ]);
 
-    // Skip specific rules
     $rectorConfig->skip([
-        CompactToVariablesRector::class,
+        ExplicitBoolCompareRector::class,
+        FirstClassCallableRector::class,
+        RemoveUselessReturnTagRector::class,
+        RemoveUselessVarTagRector::class,
+        RemoveUselessParamTagRector::class
     ]);
 
-    // Enable caching for Rector
-    $rectorConfig->cacheDirectory(__DIR__.'/storage/rector');
-    $rectorConfig->cacheClass(FileCacheStorage::class);
+    $rectorConfig->importNames();
+    $rectorConfig->importShortClasses();
+    $rectorConfig->removeUnusedImports();
 
-    // Apply sets for Laravel and general code quality
+    $rectorConfig->rule(ExplicitNullableParamTypeRector::class);
+
     $rectorConfig->sets([
-        LaravelLevelSetList::UP_TO_LARAVEL_120,
+        LevelSetList::UP_TO_PHP_82,
         SetList::CODE_QUALITY,
+        SetList::DEAD_CODE,
+        SetList::TYPE_DECLARATION,
     ]);
-
-    // Define PHP version for Rector
-    $rectorConfig->phpVersion(PhpVersion::PHP_82);
 };

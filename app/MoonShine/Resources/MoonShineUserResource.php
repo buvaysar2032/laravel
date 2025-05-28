@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
+use MoonShine\Permissions\Models\MoonshineUser;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use MoonShine\Laravel\Enums\Action;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
-use MoonShine\Laravel\Models\MoonshineUser;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Laravel\Models\MoonshineUserRole;
 use MoonShine\MenuManager\Attributes\Group;
@@ -40,7 +40,7 @@ class MoonShineUserResource extends ModelResource
 {
     use WithPermissions;
 
-    protected string $model = \MoonShine\Permissions\Models\MoonshineUser::class;
+    protected string $model = MoonshineUser::class;
 
     protected string $column = 'name';
 

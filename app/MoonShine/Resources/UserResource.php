@@ -79,7 +79,7 @@ class UserResource extends ModelResource
                 ActionButton::make('Отправить письмо подтверждения')
                     ->method(
                         'sendVerification',
-                        fn(Model $item) => ['resourceItem' => $item->getKey()]
+                        fn(Model $item): array => ['resourceItem' => $item->getKey()]
                     )
                     ->async() // Асинхронный вызов
                     ->icon('envelope')
