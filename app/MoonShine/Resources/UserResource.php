@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-
+use Illuminate\Database\Eloquent\Model;
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Contracts\UI\FieldContract;
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
 use MoonShine\Laravel\Enums\Action;
 use MoonShine\Laravel\Http\Responses\MoonShineJsonResponse;
 use MoonShine\Laravel\MoonShineRequest;
@@ -17,8 +20,6 @@ use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\Email;
 use MoonShine\UI\Fields\ID;
-use MoonShine\Contracts\UI\FieldContract;
-use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\UI\Fields\Password;
 use MoonShine\UI\Fields\Text;
 use Psr\Container\ContainerExceptionInterface;
@@ -28,11 +29,33 @@ use Throwable;
 /**
  * @extends ModelResource<User>
  */
-class UserResource extends ModelResource
+class UserResource extends ModelResource implements HasImportExportContract
 {
+    use ImportExportConcern;
+
     protected string $model = User::class;
 
     protected string $title = 'Пользователи';
+
+    protected function exportFields(): iterable
+    {
+        return [
+            ID::make(),
+            Text::make('Name'),
+            Email::make('Email'),
+            Password::make('Password'),
+        ];
+    }
+
+    protected function importFields(): iterable
+    {
+        return [
+            ID::make(),
+            Text::make('Name'),
+            Email::make('Email'),
+            Password::make('Password'),
+        ];
+    }
 
     protected function activeActions(): ListOf
     {
@@ -54,7 +77,10 @@ class UserResource extends ModelResource
         $attempts = cache()->get($cacheKey, 0);
 
         if ($attempts >= $throttleLimit) {
-            return MoonShineJsonResponse::make()->toast('Вы превысили лимит запросов. Попробуйте позже.', ToastType::ERROR);
+            return MoonShineJsonResponse::make()->toast(
+                'Вы превысили лимит запросов. Попробуйте позже.',
+                ToastType::ERROR
+            );
         }
 
         if ($user->hasVerifiedEmail()) {
