@@ -5,16 +5,12 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use App\Models\Text;
-use MoonShine\ChangeLog\Components\ChangeLog;
 use MoonShine\CKEditor\Fields\CKEditor;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Laravel\Resources\ModelResource;
-use MoonShine\Support\Enums\Layer;
 use MoonShine\UI\Components\Layout\Box;
-use MoonShine\UI\Fields\Date;
-use MoonShine\UI\Fields\ID;
-use VI\MoonShineSpatieMediaLibrary\Fields\MediaLibrary;
+use MoonShine\UI\Fields\{Date, ID};
 
 /**
  * @extends ModelResource<Text>
@@ -25,14 +21,6 @@ class TextResource extends ModelResource
 
     protected string $title = 'Тексты';
 
-    protected function onLoad(): void
-    {
-        $this->getFormPage()->pushToLayer(
-            Layer::BOTTOM,
-            ChangeLog::make('Changelog', $this, userResource: MoonShineUserResource::class)->limit(10)
-        );
-    }
-
     /**
      * @return list<FieldContract>
      */
@@ -42,7 +30,6 @@ class TextResource extends ModelResource
             ID::make()->sortable(),
             \MoonShine\UI\Fields\Text::make('Ключ', 'key'),
             CKEditor::make('Значение', 'value'),
-            MediaLibrary::make('Cover', 'cover'),
             Date::make('Дата создания', 'created_at')->format('d.m.Y H:i')->sortable(),
             Date::make('Дата изменения', 'updated_at')->format('d.m.Y H:i')->sortable()
         ];
@@ -58,8 +45,6 @@ class TextResource extends ModelResource
                 ID::make(),
                 \MoonShine\UI\Fields\Text::make('Ключ', 'key'),
                 CKEditor::make('Значение', 'value'),
-
-                MediaLibrary::make('Cover', 'cover')
             ])
         ];
     }
