@@ -6,13 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 use App\OpenApi\Attributes\RequestFormData;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use OpenApi\Attributes\Items;
-use OpenApi\Attributes\JsonContent;
-use OpenApi\Attributes\Post;
-use OpenApi\Attributes\Property;
+use Illuminate\Http\{JsonResponse, Request, Response};
+use OpenApi\Attributes\{Items, JsonContent, Post, Property};
 
 class LoginController extends Controller
 {
@@ -53,7 +48,11 @@ class LoginController extends Controller
         description: 'Ошибка валидации',
         content: new JsonContent(
             properties: [
-                new Property(property: "message", type: "string", example: "Значение поля email адрес должно быть действительным электронным адресом."),
+                new Property(
+                    property: "message",
+                    type: "string",
+                    example: "Значение поля email адрес должно быть действительным электронным адресом."
+                ),
                 new Property(
                     property: "errors",
                     properties: [
@@ -118,7 +117,6 @@ class LoginController extends Controller
     )]
     public function destroy(Request $request): Response
     {
-
         $request->user()->currentAccessToken()->delete();
 
         // Auth::guard('web')->logout();

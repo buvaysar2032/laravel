@@ -3,9 +3,7 @@
 namespace App\OpenApi\Attributes;
 
 use Attribute;
-use OpenApi\Attributes\JsonContent;
-use OpenApi\Attributes\Property;
-use OpenApi\Attributes\Response;
+use OpenApi\Attributes\{JsonContent, Property, Response};
 
 #[Attribute(Attribute::TARGET_CLASS | Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE)]
 class JsonSuccess extends Response

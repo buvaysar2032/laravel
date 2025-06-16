@@ -5,18 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\OpenApi\Attributes\RequestFormData;
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
+use Illuminate\Http\{JsonResponse, Request};
+use Illuminate\Support\Facades\{Hash, Password};
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rules;
-use Illuminate\Validation\ValidationException;
-use OpenApi\Attributes\Items;
-use OpenApi\Attributes\JsonContent;
-use OpenApi\Attributes\Post;
-use OpenApi\Attributes\Property;
-use OpenApi\Attributes\Response;
+use Illuminate\Validation\{Rules, ValidationException};
+use OpenApi\Attributes\{Items, JsonContent, Post, Property, Response};
 
 class NewPasswordController extends Controller
 {
@@ -55,18 +48,29 @@ class NewPasswordController extends Controller
         description: 'Ошибка: Необрабатываемое содержимое',
         content: new JsonContent(
             properties: [
-                new Property(property: "message", type: "string", example: "Значение поля email адрес должно быть действительным электронным адресом."),
+                new Property(
+                    property: "message",
+                    type: "string",
+                    example: "Значение поля email адрес должно быть действительным электронным адресом."
+                ),
                 new Property(
                     property: "errors",
                     properties: [
                         new Property(
                             property: "email",
                             type: "array",
-                            items: new Items(type: "string", example: "Значение поля email адрес должно быть действительным электронным адресом.")
-                        ),new Property(
+                            items: new Items(
+                                type: "string",
+                                example: "Значение поля email адрес должно быть действительным электронным адресом."
+                            )
+                        ),
+                        new Property(
                             property: "password",
                             type: "array",
-                            items: new Items(type: "string", example: "Количество символов в поле пароль должно быть не меньше 8.")
+                            items: new Items(
+                                type: "string",
+                                example: "Количество символов в поле пароль должно быть не меньше 8."
+                            )
                         ),
                     ],
                     type: "object"

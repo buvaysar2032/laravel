@@ -1,7 +1,7 @@
 {
     "resources": [
         {
-            "name": "TestEntity",
+            "name": "Test",
             "timestamps": true,
             "fields": [
                 {

@@ -6,8 +6,7 @@ namespace App\MoonShine\Resources;
 
 use App\Models\Text;
 use MoonShine\CKEditor\Fields\CKEditor;
-use MoonShine\Contracts\UI\ComponentContract;
-use MoonShine\Contracts\UI\FieldContract;
+use MoonShine\Contracts\UI\{ComponentContract, FieldContract};
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\{Date, ID};

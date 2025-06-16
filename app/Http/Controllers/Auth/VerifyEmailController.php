@@ -6,12 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\JsonResponse;
-use OpenApi\Attributes\Get;
-use OpenApi\Attributes\JsonContent;
-use OpenApi\Attributes\Parameter;
-use OpenApi\Attributes\Property;
-use OpenApi\Attributes\Response;
-use OpenApi\Attributes\Schema;
+use OpenApi\Attributes\{Get, JsonContent, Parameter, Property, Response, Schema};
 
 class VerifyEmailController extends Controller
 {
@@ -26,10 +21,18 @@ class VerifyEmailController extends Controller
         security: [['bearerAuth' => []]],
         tags: ['Auth']
     )]
-    #[Parameter(name: 'id', description: 'ID пользователя для подтверждения email', in: 'path', required: true, schema: new Schema(type: 'string'))]
-    #[Parameter(name: 'hash', description: 'Хеш, генерируемый для подтверждения email', in: 'path', required: true, schema: new Schema(type: 'string'))]
-    #[Parameter(name: 'expires', description: 'Дата истечения срока действия подписи (UNIX timestamp)', in: 'query', required: true, schema: new Schema(type: 'integer'))]
-    #[Parameter(name: 'signature', description: 'Подпись для верификации', in: 'query', required: true, schema: new Schema(type: 'string'))]
+    #[Parameter(name: 'id', description: 'ID пользователя для подтверждения email', in: 'path', required: true, schema: new Schema(
+        type: 'string'
+    ))]
+    #[Parameter(name: 'hash', description: 'Хеш, генерируемый для подтверждения email', in: 'path', required: true, schema: new Schema(
+        type: 'string'
+    ))]
+    #[Parameter(name: 'expires', description: 'Дата истечения срока действия подписи (UNIX timestamp)', in: 'query', required: true, schema: new Schema(
+        type: 'integer'
+    ))]
+    #[Parameter(name: 'signature', description: 'Подпись для верификации', in: 'query', required: true, schema: new Schema(
+        type: 'string'
+    ))]
     #[Response(
         response: 200,
         description: 'Email успешно подтвержден.',
@@ -44,7 +47,11 @@ class VerifyEmailController extends Controller
         description: 'Ссылка для подтверждения email недействительна или устарела',
         content: new JsonContent(
             properties: [
-                new Property(property: 'status', type: 'string', example: 'Эта ссылка для подтверждения email больше недействительна. Пожалуйста, запросите новое письмо с подтверждением.')
+                new Property(
+                    property: 'status',
+                    type: 'string',
+                    example: 'Эта ссылка для подтверждения email больше недействительна. Пожалуйста, запросите новое письмо с подтверждением.'
+                )
             ]
         )
     )]

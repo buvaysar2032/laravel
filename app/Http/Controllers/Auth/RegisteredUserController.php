@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Validation\Rules\Password;
-use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\OpenApi\Attributes\RequestFormData;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use Illuminate\Http\{JsonResponse, Request};
 use Illuminate\Support\Facades\Hash;
-use OpenApi\Attributes\Items;
-use OpenApi\Attributes\JsonContent;
-use OpenApi\Attributes\Post;
-use OpenApi\Attributes\Property;
-use OpenApi\Attributes\Response;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\ValidationException;
+use OpenApi\Attributes\{Items, JsonContent, Post, Property, Response};
 
 #[Post(
     path: '/api/register',
@@ -42,9 +37,26 @@ use OpenApi\Attributes\Response;
             new Property(property: 'user', properties: [
                 new Property(property: 'id', description: 'ID пользователя', type: 'integer', example: 1),
                 new Property(property: 'name', description: 'Имя пользователя', type: 'string', example: 'John Doe'),
-                new Property(property: 'email', description: 'Email пользователя', type: 'string', example: 'john@example.com'),
-                new Property(property: 'created_at', description: 'Дата создания пользователя', type: 'string', format: 'date-time', example: '2025-04-16T12:00:00Z'),
-                new Property(property: 'updated_at', description: 'Дата последнего обновления пользователя', type: 'string', format: 'date-time', example: '2025-04-16T12:00:00Z')
+                new Property(
+                    property: 'email',
+                    description: 'Email пользователя',
+                    type: 'string',
+                    example: 'john@example.com'
+                ),
+                new Property(
+                    property: 'created_at',
+                    description: 'Дата создания пользователя',
+                    type: 'string',
+                    format: 'date-time',
+                    example: '2025-04-16T12:00:00Z'
+                ),
+                new Property(
+                    property: 'updated_at',
+                    description: 'Дата последнего обновления пользователя',
+                    type: 'string',
+                    format: 'date-time',
+                    example: '2025-04-16T12:00:00Z'
+                )
             ], type: 'object')
         ]
     )
@@ -54,19 +66,27 @@ use OpenApi\Attributes\Response;
     description: 'Ошибка валидации',
     content: new JsonContent(
         properties: [
-            new Property(property: "message", type: "string", example: "Такое значение поля email адрес уже существует."),
+            new Property(
+                property: "message", type: "string", example: "Такое значение поля email адрес уже существует."
+            ),
             new Property(
                 property: "errors",
                 properties: [
                     new Property(
                         property: "email",
                         type: "array",
-                        items: new Items(type: "string", example: "Значение поля email адрес должно быть действительным электронным адресом.")
+                        items: new Items(
+                            type: "string",
+                            example: "Значение поля email адрес должно быть действительным электронным адресом."
+                        )
                     ),
                     new Property(
                         property: "password",
                         type: "array",
-                        items: new Items(type: "string", example: "Количество символов в поле пароль должно быть не меньше 8.")
+                        items: new Items(
+                            type: "string",
+                            example: "Количество символов в поле пароль должно быть не меньше 8."
+                        )
                     )
                 ],
                 type: "object"

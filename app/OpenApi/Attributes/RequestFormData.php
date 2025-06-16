@@ -3,10 +3,7 @@
 namespace App\OpenApi\Attributes;
 
 use Attribute;
-use OpenApi\Attributes\AdditionalProperties;
-use OpenApi\Attributes\MediaType;
-use OpenApi\Attributes\RequestBody;
-use OpenApi\Attributes\Schema;
+use OpenApi\Attributes\{AdditionalProperties, MediaType, RequestBody, Schema};
 
 #[Attribute(Attribute::TARGET_CLASS | Attribute::TARGET_METHOD | Attribute::TARGET_PARAMETER)]
 class RequestFormData extends RequestBody

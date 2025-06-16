@@ -11,8 +11,7 @@ use MoonShine\Laravel\Enums\Action;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Laravel\Models\MoonshineUserRole;
-use MoonShine\MenuManager\Attributes\Group;
-use MoonShine\MenuManager\Attributes\Order;
+use MoonShine\MenuManager\Attributes\{Group, Order};
 use MoonShine\Permissions\Traits\WithPermissions;
 use MoonShine\Support\Attributes\Icon;
 use MoonShine\Support\Enums\Color;
@@ -22,13 +21,7 @@ use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Components\Layout\Flex;
 use MoonShine\UI\Components\Tabs;
 use MoonShine\UI\Components\Tabs\Tab;
-use MoonShine\UI\Fields\Date;
-use MoonShine\UI\Fields\Email;
-use MoonShine\UI\Fields\ID;
-use MoonShine\UI\Fields\Image;
-use MoonShine\UI\Fields\Password;
-use MoonShine\UI\Fields\PasswordRepeat;
-use MoonShine\UI\Fields\Text;
+use MoonShine\UI\Fields\{Date, Email, ID, Image, Password, PasswordRepeat, Text};
 
 #[Icon('users')]
 #[Group('moonshine::ui.resource.system', 'users', translatable: true)]

@@ -6,8 +6,7 @@ namespace App\MoonShine\Resources;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use MoonShine\Contracts\UI\ComponentContract;
-use MoonShine\Contracts\UI\FieldContract;
+use MoonShine\Contracts\UI\{ComponentContract, FieldContract};
 use MoonShine\ImportExport\Contracts\HasImportExportContract;
 use MoonShine\ImportExport\Traits\ImportExportConcern;
 use MoonShine\Laravel\Enums\Action;
@@ -18,12 +17,8 @@ use MoonShine\Support\Enums\ToastType;
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\Layout\Box;
-use MoonShine\UI\Fields\Email;
-use MoonShine\UI\Fields\ID;
-use MoonShine\UI\Fields\Password;
-use MoonShine\UI\Fields\Text;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
+use MoonShine\UI\Fields\{Email, ID, Password, Text};
+use Psr\Container\{ContainerExceptionInterface, NotFoundExceptionInterface};
 use Throwable;
 
 /**

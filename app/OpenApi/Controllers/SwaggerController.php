@@ -4,9 +4,7 @@ namespace App\OpenApi\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use OpenApi\Attributes\Info;
-use OpenApi\Attributes\SecurityScheme;
-use OpenApi\Attributes\Server;
+use OpenApi\Attributes\{Info, SecurityScheme, Server};
 use OpenApi\Generator;
 use OpenApi\Util;
 

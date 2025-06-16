@@ -3,13 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use OpenApi\Attributes\JsonContent;
-use OpenApi\Attributes\Post;
-use OpenApi\Attributes\Property;
-use OpenApi\Attributes\Response;
+use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
+use OpenApi\Attributes\{JsonContent, Post, Property, Response};
 
 class EmailVerificationNotificationController extends Controller
 {

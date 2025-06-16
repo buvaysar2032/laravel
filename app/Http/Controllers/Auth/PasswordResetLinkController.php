@@ -4,15 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\OpenApi\Attributes\RequestFormData;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use Illuminate\Http\{JsonResponse, Request};
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
-use OpenApi\Attributes\Items;
-use OpenApi\Attributes\JsonContent;
-use OpenApi\Attributes\Post;
-use OpenApi\Attributes\Property;
-use OpenApi\Attributes\Response;
+use OpenApi\Attributes\{Items, JsonContent, Post, Property, Response};
 
 class PasswordResetLinkController extends Controller
 {
@@ -48,14 +43,21 @@ class PasswordResetLinkController extends Controller
         description: 'Ошибка: Необработанный контент',
         content: new JsonContent(
             properties: [
-                new Property(property: "message", type: "string", example: "Значение поля email адрес должно быть действительным электронным адресом."),
+                new Property(
+                    property: "message",
+                    type: "string",
+                    example: "Значение поля email адрес должно быть действительным электронным адресом."
+                ),
                 new Property(
                     property: "errors",
                     properties: [
                         new Property(
                             property: "email",
                             type: "array",
-                            items: new Items(type: "string", example: "Не удалось найти пользователя с указанным электронным адресом.")
+                            items: new Items(
+                                type: "string",
+                                example: "Не удалось найти пользователя с указанным электронным адресом."
+                            )
                         ),
                     ],
                     type: "object"

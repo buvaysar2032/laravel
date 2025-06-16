@@ -15,8 +15,8 @@ class TextResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'key' => $this->key,
-            'value' => $this->value,
+            'key' => $this->resource->key,
+            'value' => $this->resource->value,
         ];
     }
 }
