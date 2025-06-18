@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'moonshine' => [
+            'driver' => 'session',
+            'provider' => 'moonshine_users',
+        ],
     ],
 
     /*
@@ -69,6 +74,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'moonshine_users' => [
+            'driver' => 'eloquent',
+            'model' => \MoonShine\Permissions\Models\MoonshineUser::class,
+        ],
     ],
 
     /*
