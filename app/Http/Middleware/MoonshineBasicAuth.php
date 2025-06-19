@@ -16,6 +16,6 @@ class MoonshineBasicAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return Auth::guard('moonshine')->basic() ?: $next($request);
+        return Auth::guard('moonshine')->onceBasic() ?: $next($request);
     }
 }
