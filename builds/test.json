@@ -1,8 +1,16 @@
 {
+    "_comment": "php artisan moonshine:build test.json",
     "resources": [
         {
             "name": "Test",
+            "menuName": "Тесты",
+            "table": "test",
             "timestamps": true,
+
+            "withMigration": true,
+            "withModel": true,
+            "withResource": true,
+
             "fields": [
                 {
                     "column": "id",
@@ -10,19 +18,28 @@
                     "methods": ["sortable"]
                 },
                 {
-                    "column": "name",
-                    "type": "string",
-                    "name": "Name"
+                    "column": "title",
+                    "type": "string"
                 },
                 {
-                    "column": "email",
+                    "column": "image",
                     "type": "string",
-                    "name": "Email"
+                    "nullable": true,
+                    "field": "Image"
                 },
                 {
-                    "column": "is_active",
-                    "type": "boolean",
-                    "name": "Is Active"
+                    "column": "discount",
+                    "type": "decimal",
+                    "default": 0.0,
+                    "nullable": true,
+                    "hasFilter": true
+                },
+                {
+                    "column": "user_id",
+                    "type": "BelongsTo",
+                    "relation": {
+                        "table" : "users"
+                    }
                 }
             ]
         }
