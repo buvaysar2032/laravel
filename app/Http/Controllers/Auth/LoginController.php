@@ -74,7 +74,7 @@ class LoginController extends Controller
         $user = User::where('email', $request->email)->first();
 
         $data = [
-            'token' => $user->createToken("token for" . $user->email)->plainTextToken,
+            'token' => $user->createToken('token for ' . $user->email)->plainTextToken,
             'user' => [
                 'name' => $user->name,
                 'email' => $user->email
